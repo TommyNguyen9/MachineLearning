@@ -2,6 +2,10 @@ import json
 import pickle
 import numpy as np
 import pandas as pd
+import warnings
+
+warnings.filterwarnings("ignore")
+
 
 __locations = None
 __data_columns = None
