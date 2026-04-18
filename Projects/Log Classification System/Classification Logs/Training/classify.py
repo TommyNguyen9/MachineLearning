@@ -28,12 +28,12 @@ def classify_csv(input_file):
 
     df['target_label'] = classify(list(zip(df["source"], df["log_message"])))
 
-    output_file = "resources/output.csv"
+    output_file = "Resources/output.csv"
     df.to_csv(output_file, index = False)
 
 
 if __name__ == "__main__":
-    classify_csv("resources/test.csv")
+    classify_csv("Resources/test.csv")
 
     # logs = [
     #     ("ModernCRM", "IP 192.168.184.193 blocked due to potential attack!"),

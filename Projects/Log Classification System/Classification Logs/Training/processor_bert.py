@@ -4,12 +4,20 @@ import joblib
 import os
 print(os.getcwd())
 
-transformer_model = SentenceTransformer('all-MiniLM-L6-v2')
+transformer_model = None
+
+def get_model():
+    global transformer_model
+    if transformer_model is None:
+        transformer_model = SentenceTransformer('all-MiniLM-L6-v2')
+    return transformer_model
 
 classifier_model = joblib.load(r"C:\Users\Smoke Nandos\Desktop\Computer Science Uni\Machine Learning\Projects\Log Classification System\Classification Logs\Models\log_classifier.joblib")
 
 
 def classify_with_bert(log_message):
+    model = get_model()
+    
     message_embedding = transformer_model.encode(log_message)
     probabilities = classifier_model.predict_proba([message_embedding])[0]
    
